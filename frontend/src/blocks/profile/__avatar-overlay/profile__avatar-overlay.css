@@ -1,0 +1,23 @@
+.profile__avatar-overlay {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    background-color: black;
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 80%;
+    transition: opacity .3s ease-in;
+}
+
+.profile__avatar-overlay:hover {
+    opacity: .8;
+}
+
+@media screen and (max-width: 779px) {
+    .profile__avatar-overlay {
+        top: 42px;
+        border: 1 px red solid;
+    }
+
+}

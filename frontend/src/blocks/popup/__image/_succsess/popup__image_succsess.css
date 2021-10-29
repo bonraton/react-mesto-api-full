@@ -1,0 +1,15 @@
+.popup__image_succsess {
+    background: none;
+    background-image: url(../../../../images/succsess_image.svg);
+    stroke-width: 0px;
+    margin: 60px 155px 32px 155px;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+}
+
+@media screen and (max-width: 459px) {
+    .popup__image_succsess {
+        margin: 50px 80px 40px 80px;
+    }
+}

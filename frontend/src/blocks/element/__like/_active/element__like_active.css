@@ -1,0 +1,12 @@
+.element__like_active {
+    background: none;
+    background-image: url(../../../../images/element-like_selected.svg);
+    width: 22px;
+    height: 19px;
+    cursor: pointer;
+    margin: 31px 30px 0 auto;
+    transition: opacity 1s linear;
+    border: none;
+    outline: none;
+    background-repeat: no-repeat;
+}

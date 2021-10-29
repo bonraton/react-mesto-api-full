@@ -1,0 +1,6 @@
+.element__like-counter {
+    display: block;
+    margin: 3px auto 0 0;
+    width: 22px;
+    font-weight: normal;
+}

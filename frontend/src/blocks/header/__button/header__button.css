@@ -1,0 +1,19 @@
+.header__button {
+    background: none;
+    margin: none;
+    outline: none;
+    stroke: none;
+    border: none;
+    background-image: url(../../../images/header_button.svg);
+    align-self: flex-end;
+    width: 24px;
+    height: 21px;
+    margin-right: 30px;
+    display: none;
+}
+
+@media screen and (max-width: 459px) {
+    .header__button {
+        display: flex;
+    }
+}

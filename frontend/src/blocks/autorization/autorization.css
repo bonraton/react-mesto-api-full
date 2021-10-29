@@ -1,0 +1,12 @@
+.autorization {
+    display: flex;
+    flex-direction: column;
+    max-width: 358px;
+    margin: 0 auto 0 auto;
+}
+
+@media screen and (max-width: 459px) {
+    .autorization {
+        max-width: 260px;
+    }
+}

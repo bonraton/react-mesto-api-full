@@ -1,0 +1,14 @@
+.header__link { 
+color: #A9A9A9;
+width: 100%;
+display: inline;
+text-align: center;
+text-decoration: none;
+}
+
+@media screen and (max-width:  449px) {
+    
+    .header__link {
+        order: -1;
+    }
+}

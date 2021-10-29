@@ -1,0 +1,16 @@
+.header__autorization-container {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-bottom: 32px;
+}
+
+@media  screen and (max-width: 459px) {
+    .header__autorization-container {
+        display: none;
+        order: -1;
+        flex-direction: column;
+        margin: 40px auto 18px auto;
+        padding-bottom: 0;
+    }
+}

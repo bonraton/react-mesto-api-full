@@ -1,0 +1,10 @@
+.popup__content {
+    max-width: 90%;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 10px;
+    box-sizing: border-box;
+    align-self: center;
+    position: relative;
+    cursor: default;
+}

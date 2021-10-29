@@ -1,0 +1,11 @@
+.autorization-form__input {
+    background-color: black;
+    color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px, solid, white;
+    outline: none;
+    padding-bottom: 13px;
+    margin-top: 30px;
+}

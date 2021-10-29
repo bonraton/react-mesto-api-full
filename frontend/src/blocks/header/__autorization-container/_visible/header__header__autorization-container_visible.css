@@ -1,0 +1,6 @@
+.header__autorization-container_visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
