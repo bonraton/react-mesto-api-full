@@ -53,7 +53,7 @@ function Register(props) {
         ></input>
         <p className="autorization__paragraph">
           Уже зарегистрировались?{" "}
-          <Link className="autorization__paragraph" to="./sign-in">
+          <Link className="autorization__paragraph" to="./signin">
             Войти
           </Link>
         </p>

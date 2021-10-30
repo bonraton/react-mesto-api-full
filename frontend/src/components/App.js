@@ -198,7 +198,7 @@ function App(props) {
       if (result) {
         registerSuccsess();
         handleRegisterPopupOpen();
-        props.history.push("./sign-in");
+        props.history.push("./signin");
       } 
     } catch (e) {
       handleRegisterPopupOpen();
@@ -261,8 +261,8 @@ function App(props) {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__container">
-          <Route path="/sign-in">
-            <Header link="Регистрация" path="/sign-up" onSignOut={signOut} />
+          <Route path="/signin">
+            <Header link="Регистрация" path="/signup" onSignOut={signOut} />
             <Login
               onLogin={handleLogin}
               onPopupOpen={handleRegisterPopupOpen}
@@ -275,10 +275,10 @@ function App(props) {
               succsess="Вы успешно зарегистрировались!"
             />
           </Route>
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Header
               link="Войти"
-              path="/sign-in"
+              path="/signin"
               onClick={clicked}
               onSignOut={signOut}
             />
@@ -292,12 +292,12 @@ function App(props) {
           </Route>
 
           <Route path="/" exact>
-            {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+            {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
 
             <Header
               link="Выйти"
               userEmail={userInfo}
-              path="/sign-in"
+              path="/signin"
               onClick={clicked}
               isClicked={headerInfo}
               onSignOut={signOut}
@@ -338,7 +338,7 @@ function App(props) {
           />
         </div>
         <Route path="*">
-          {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+          {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
         </Route>
       </div>
     </CurrentUserContext.Provider>
