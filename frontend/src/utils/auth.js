@@ -1,4 +1,4 @@
-export const BASE_URL = "nomoredomains.mesto.nomoredomains.rocks";
+export const BASE_URL = "api.nomoredomains.mesto.nomoredomains.work";
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
