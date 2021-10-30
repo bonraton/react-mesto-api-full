@@ -116,6 +116,6 @@ export class Api {
 }
 
 export default new Api(
-  "nomoredomains.mesto.nomoredomains.rocks",
+  "https://api.nomoredomains.mesto.nomoredomains.work",
   "09fddbd8-b63c-4352-8240-79b061fd7f20"
 );

@@ -1,10 +1,10 @@
-export const BASE_URL = "http://nomoredomains.mesto.nomoredomains.rocks";
+export const BASE_URL = "https://api.nomoredomains.mesto.nomoredomains.work/";
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       email: email,
