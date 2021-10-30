@@ -36,21 +36,6 @@ const deleteCard = (req, res, next) => {
     });
 };
 
-// const deleteCard = (req, res, next) => {
-//   Card.findById(req.params.id)
-//     .then((card) => {
-//       console.log(card.owner.equals(req.user._id));
-//       if (card.owner.equals(req.user._id)) {
-//         card.deleteOne(card)
-//           .then(() => res.send({ data: card }));
-//       }
-//       next(new ForbiddenError('Вы не можете удалить чужую карточку'));
-//     })
-//     .catch(() => {
-//       next(new NotFoundError('Данная карточка не найдена'));
-//     });
-// };
-
 const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.id,
