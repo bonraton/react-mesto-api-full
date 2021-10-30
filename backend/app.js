@@ -7,6 +7,18 @@ const { registerValidator, loginValidator } = require('./middlewares/validation'
 
 const { PORT = 3000 } = process.env;
 const app = express();
+const allowedCors = [
+  'http://nomoredomains.mesto.nomoredomains.rocks',
+  'localhost:3000'
+]
+
+app.use(function(req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Acces-Control-Allow-Origin', origin);
+  }
+  next();
+})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
