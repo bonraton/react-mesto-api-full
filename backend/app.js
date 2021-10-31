@@ -5,6 +5,11 @@ const { login, createUser } = require('./controllers/user');
 const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 
+const allowedCors = [
+  'https://nomoredomains.mesto.nomoredomains.rocks',
+  'https://api.nomoredomains.mesto.nomoredomains.work'
+]
+
 const { PORT = 3000 } = process.env;
 const app = express();
 
@@ -14,6 +19,14 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
+
+app.use(function(req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', "*")
+  }
+  next();
+})
 
 app.use('/users', jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));
