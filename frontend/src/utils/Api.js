@@ -115,7 +115,4 @@ export class Api {
   }
 }
 
-export default new Api(
-  'api.nomoredomains.mesto.nomoredomains.work',
-  null
-);
+export default new Api();
