@@ -202,7 +202,7 @@ function App(props) {
       } 
     } catch (e) {
       handleRegisterPopupOpen();
-      console.log("Ошибка");
+      console.log(e);
     }
   }
 
@@ -219,7 +219,7 @@ function App(props) {
     } catch (e) {
       setIsEditRegisterSuccsess(false)
       handleRegisterPopupOpen(); 
-      console.log(`Ошибка ${e}`);
+      console.log(e);
     }
   }
 
