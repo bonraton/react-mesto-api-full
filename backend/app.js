@@ -20,13 +20,13 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
 
-app.use(function(req, res, next) {
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', "*")
-  }
-  next();
-})
+// app.use(function(req, res, next) {
+//   const { origin } = req.headers;
+//   if (allowedCors.includes(origin)) {
+//     res.header('Access-Control-Allow-Origin', "*")
+//   }
+//   next();
+// })
 
 app.use('/users', jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));
