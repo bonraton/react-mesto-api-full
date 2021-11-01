@@ -5,6 +5,12 @@ const { login, createUser } = require('./controllers/user');
 const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 
+const allowedCors = ['http://localhost:3000',
+                     'http://nomoredomains.mesto.nomoredomains.rocks',
+                     'https://api.nomoredomains.mesto.nomoredomains.work'
+                    ]
+const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
+
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -15,6 +21,26 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
+
+app.use(function(req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  next();
+})
+
+app.use(function(req, res, next) {
+  const { method } = req;
+  const requestHeaders  = req.headers['access-control-request-headers'];
+  if (method === 'OPTIONS') {
+    res.status(200);
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWEDMETHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
+  next();
+})
 
 app.use('/users', jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));

@@ -106,7 +106,7 @@ function App(props) {
     try {
       const result = await Api.editProfileInfo(name, about);
       if (result) {
-        setCurrentUser(result);
+        setCurrentUser(result.data);
         closeAllPopups();
       }
     } catch (e) {
@@ -119,7 +119,7 @@ function App(props) {
     try {
       const result = await Api.editAvatarInfo(avatar);
       if (result) {
-        setCurrentUser(result);
+        setCurrentUser(result.data);
         closeAllPopups();
       }
     } catch (e) {
@@ -132,7 +132,7 @@ function App(props) {
     try {
       const result = await Api.getCards();
       if (result) {
-        const card = result.map((card) => {
+        const card = result.data.map((card) => {
           return {
             key: card._id,
             link: card.link,
@@ -157,12 +157,13 @@ function App(props) {
 
   // лайк карточки
   async function handleCardLike(card) {
-    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+    const isLiked = card.likes.some((item) => item === currentUser._id);
       try {
         const result = await Api.changeLikeStatus(card._id, !isLiked);
-        if (result) {
+        if (result.data) {
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? result : c))
+          state.map((c) => (c._id === card._id ? result.data : c))
+          // state.map((c) => (console.log(c), console.log(result.data)))
         );
         }
       } catch (e) {
@@ -171,10 +172,10 @@ function App(props) {
   }
 
   //Добавление карточки
-  async function handleAddPlaceSubmit(name, link) {
+  async function handleAddPlaceSubmit(data) {
     try {
-      const result = await Api.postCard(name, link);
-      setCards([result, ...cards]);
+      const result = await Api.postCard(data);
+      setCards([result.data, ...cards]);
       closeAllPopups();
     } catch (e) {
       console.log(`Ошибка при отправке данных ${e}`);
@@ -230,8 +231,8 @@ function App(props) {
       const data = await auth.getContent(jwt);
       if (jwt) {
         const userData = {
-          id: data.data._id,
-          email: data.data.email,
+          id: data._id,
+          email: data.email,
         };
         setLoggedIn(true);
         props.history.push("/");

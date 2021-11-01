@@ -16,7 +16,7 @@ const getUsers = (req, res, next) => User.find({})
   .then((user) => res.send({ data: user }))
   .catch(next);
 
-const getUser = (req, res, next) => User.findById(req.params.id)
+const getUser = (req, res, next) => User.findById(req.user._id)
   .then((user) => {
     if (user) {
       res.status(200).send(user);

@@ -1,7 +1,7 @@
 export class Api {
-  constructor(adress, token) {
-    this._adress = adress;
-    this._token = token;
+  constructor() {
+    this._adress = 'http://localhost:3000';
+    this._token = ` Bearer ${localStorage.jwt}`;
   }
 
   // Проверяем статус запроса
@@ -61,14 +61,14 @@ export class Api {
 }
 
   // Отправляем карточку
-  postCard(cardName, cardLink) {
+  postCard(data) {
     return fetch(`${this._adress}/cards`, {
       method: "POST",
       headers: {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(cardName, cardLink),
+      body: JSON.stringify(data),
     }).then((result) => this._getResponseData(result));
   }
 
@@ -94,8 +94,8 @@ export class Api {
 
 
 //   Отправляем лайк
-  sendLike(data) {
-    return fetch(`${this._adress}/cards/likes/${data}`, {
+  sendLike(card) {
+    return fetch(`${this._adress}/cards/${card}/likes`, {
       method: "PUT",
       headers: {
         authorization: this._token,
@@ -106,7 +106,7 @@ export class Api {
 
   // Удаляем лайк
   removeLike(data) {
-    return fetch(`${this._adress}/cards/likes/${data}`, {
+    return fetch(`${this._adress}/cards/${data}/likes/`, {
       method: "DELETE",
       headers: {
         authorization: this._token,
