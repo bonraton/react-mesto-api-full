@@ -6,7 +6,7 @@ const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 
 const allowedCors = ['http://localhost:3000',
-                     'http://nomoredomains.mesto.nomoredomains.rocks',
+                     'https://nomoredomains.mesto.nomoredomains.rocks',
                      'https://api.nomoredomains.mesto.nomoredomains.work'
                     ]
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
