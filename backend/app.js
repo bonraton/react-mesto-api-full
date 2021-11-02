@@ -24,7 +24,10 @@ const corsOptions = {
     } else {
       callback(new Error('CORS HATE'))
     }
-  }
+  },
+  methods: DEFAULT_ALLOWEDMETHODS,
+  preflightContinue: false,
+  optionSuccessStatus: 204
 }
 
 app.use(cors(corsOptions));
