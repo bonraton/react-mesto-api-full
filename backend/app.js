@@ -4,6 +4,7 @@ const { errors } = require('celebrate');
 const { login, createUser } = require('./controllers/user');
 const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
+const { cors } = require('cors');
 
 const allowedCors = ['http://localhost:3000',
                      'https://nomoredomains.mesto.nomoredomains.rocks',
@@ -25,6 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
+
+app.use(cors());
 
 app.use(function(req, res, next) {
   const { origin } = req.headers;
