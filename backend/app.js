@@ -18,7 +18,7 @@ const corsOptions = {
   methods: ['GET, HEAD, PUT, PATCH, POST, DELETE'],
   allowedHeader: ['Content-type', 'Authorization'],
   credential: true,
-  optionsSuccessStatus: 200,
+  optionsSuccessStatus: 202,
   preflightContinue: true,
 }
 
