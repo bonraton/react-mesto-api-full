@@ -27,16 +27,16 @@ const allowedCors = ['http://localhost:3000',
 //   optionSuccessStatus: 204,
 // }
 
-app.use(cors({
-  origin: function (origin , callback) {
-    if (!origin) return callback(null, true);
-    if (allowedCors.indexOf(origin) === -1) {
-      const msg = 'HATE CORS';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}));
+// app.use(cors({
+//   origin: function (origin , callback) {
+//     if (!origin) return callback(null, true);
+//     if (allowedCors.indexOf(origin) === -1) {
+//       const msg = 'HATE CORS';
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   }
+// }));
 // app.options('*', cors(corsOptions));
 
 
