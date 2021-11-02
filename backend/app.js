@@ -10,13 +10,13 @@ const { registerValidator, loginValidator } = require('./middlewares/validation'
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(function(req, res, next) {
-  const { origin } = req.headers;
-  res.header('Acces-Control-Allow-Origin', origin);
-  res.header('Methods', ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE']);
-  res.header('Acces-Control-Allow-Headers', ['content-type', 'authorization'])
-  next();
-})
+// app.use(function(req, res, next) {
+//   const { origin } = req.headers;
+//   res.header('Acces-Control-Allow-Origin', origin);
+//   res.header('Methods', ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE']);
+//   res.header('Acces-Control-Allow-Headers', ['content-type', 'authorization'])
+//   next();
+// })
 
 const corsOptions = {
   origin: false,
