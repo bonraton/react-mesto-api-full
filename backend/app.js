@@ -6,6 +6,9 @@ const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 const cors  = require('cors');
 
+const { PORT = 3000 } = process.env;
+const app = express();
+
 
 const allowedCors = ['http://localhost:3000',
                      'https://nomoredomains.mesto.nomoredomains.rocks',
@@ -32,11 +35,6 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-
-const { PORT = 3000 } = process.env;
-const app = express();
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
