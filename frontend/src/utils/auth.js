@@ -5,7 +5,6 @@ export const register = (email, password) => {
     method: "POST",
     headers: {
       "Access-Control-Request-Origin": "content-type",
-      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       email: email,
