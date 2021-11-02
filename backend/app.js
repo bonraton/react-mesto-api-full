@@ -18,25 +18,21 @@ app.use(function(req, res, next) {
   next();
 })
 
-// const corsOptions = {
-//   origin: [
-//     'http://localhost:3000',
-//     'https://nomoredomains.mesto.nomoredomains.rocks',
-//     'https://api.nomoredomains.mesto.nomoredomains.work',
-//   ],
-//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204,
-//   allowedHeaders: [
-//     'Content-Type',
-//     'origin',
-//     'x-access-token',
-//     'authorization'
-//   ],
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: false,
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: [
+    'Content-Type',
+    'origin',
+    'x-access-token',
+    'authorization'
+  ],
+  credentials: true,
+};
 
-// app.use("*", cors(corsOptions));
+app.use("*", cors(corsOptions));
 // app.options("*", cors(corsOptions));
 
 app.use(express.json());
