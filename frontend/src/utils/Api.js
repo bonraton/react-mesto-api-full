@@ -10,9 +10,9 @@ export class Api {
     return fetch(`${this._adress}/users/me`, {
       method: "GET",
       headers: {
-        'Authorization': this._token,
+        // 'Authorization': this._token,
         'Content-Type': 'application/json',
-        // authorization: this._token,
+        authorization: this._token 
       },
     }).then((result) => this._getResponseData(result));
   }
