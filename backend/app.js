@@ -10,25 +10,25 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 
-const allowedCors = ['http://localhost:3000',
-                      'http://localhost:3001',
-                     'https://nomoredomains.mesto.nomoredomains.rocks',
-                     'http://nomoredomains.mesto.nomoredomains.rocks',
-                     'https://api.nomoredomains.mesto.nomoredomains.work',
-                     'http://api.nomoredomains.mesto.nomoredomains.work',
-                    ]
-const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
+// const allowedCors = ['http://localhost:3000',
+//                       'http://localhost:3001',
+//                      'https://nomoredomains.mesto.nomoredomains.rocks',
+//                      'http://nomoredomains.mesto.nomoredomains.rocks',
+//                      'https://api.nomoredomains.mesto.nomoredomains.work',
+//                      'http://api.nomoredomains.mesto.nomoredomains.work',
+//                     ]
+// const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
-const corsOptions = {
-  origin: "https://api.nomoredomains.mesto.nomoredomains.work",
-  allowedHeaders: 'Content-Type, Authorization',
-  methods: DEFAULT_ALLOWEDMETHODS,
-  credentials: true,
-  optionSuccessStatus: 204,
-}
+// const corsOptions = {
+//   origin: "https://api.nomoredomains.mesto.nomoredomains.work",
+//   allowedHeaders: 'Content-Type, Authorization',
+//   methods: DEFAULT_ALLOWEDMETHODS,
+//   credentials: true,
+//   optionSuccessStatus: 204,
+// }
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors());
+// app.options('*', cors(corsOptions));
 
 
 // app.use(cors(corsOptions));
