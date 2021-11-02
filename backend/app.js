@@ -7,7 +7,9 @@ const { registerValidator, loginValidator } = require('./middlewares/validation'
 
 const allowedCors = ['http://localhost:3000',
                      'https://nomoredomains.mesto.nomoredomains.rocks',
-                     'https://api.nomoredomains.mesto.nomoredomains.work'
+                     'http://nomoredomains.mesto.nomoredomains.rocks',
+                     'https://api.nomoredomains.mesto.nomoredomains.work',
+                     'http://api.nomoredomains.mesto.nomoredomains.work'
                     ]
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
