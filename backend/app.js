@@ -19,7 +19,9 @@ const app = express();
 // })
 
 const corsOptions = {
-  origin: false,
+  origin: ['https://www.api.nomoredomains.mesto.nomoredomains.work',
+            'https://nomoredomains.mesto.nomoredomains.rocks/signin',
+            'http://localhost:3000'],
   methods: ['OPTIONS', 'GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
@@ -31,7 +33,12 @@ const corsOptions = {
   ],
   credentials: true,
 };
-
+app.use(function(req, res, next) {
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200)
+  }
+  next();
+})
 app.use("*", cors(corsOptions));
 // app.options("*", cors(corsOptions));
 
