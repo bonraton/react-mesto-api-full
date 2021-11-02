@@ -18,7 +18,11 @@ if (req.method === 'OPTIONS') {
   next()
 }
 })
-app.use(cors());
+app.use(cors(), function (req, res) {
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(ok);
+  }
+});
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
