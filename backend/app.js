@@ -23,7 +23,6 @@ const { cors } = require('cors');
 //   allowedHeaders: ['content-type', 'authorization']
 // }
 
-app.use(cors());
 const { PORT = 3000 } = process.env;
 const app = express();
 
@@ -33,6 +32,8 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
+
+app.use(cors());
 
 
 
@@ -59,8 +60,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use('/users', jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));
 
-app.post('/signin',cors(), loginValidator, login);
-app.post('/signup',cors(), registerValidator, createUser);
+app.post('/signin', cors(), loginValidator, login);
+app.post('/signup', cors(), registerValidator, createUser);
 
 app.use('*', jwtCheck);
 
