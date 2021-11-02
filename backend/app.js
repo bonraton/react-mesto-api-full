@@ -15,6 +15,11 @@ const corsWhiteList = ['https://nomoredomains.mesto.nomoredomains.rocks',
 
 const corsOptions = {
   origin: '*',
+  methods: ['GET, HEAD, PUT, PATCH, POST, DELETE'],
+  allowedHeader: ['Content-type', 'Authorization'],
+  credential: true,
+  optionsSuccessStatus: 200,
+  preflightContinue: false,
 }
 
 app.use(cors(corsOptions))
