@@ -6,44 +6,13 @@ const { login, createUser } = require('./controllers/user');
 const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 
-
 const { PORT = 3000 } = process.env;
 const app = express();
 
-// app.use(function(req, res, next) {
-//   const { origin } = req.headers;
-//   res.header('Acces-Control-Allow-Origin', origin);
-//   res.header('Methods', ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE']);
-//   res.header('Acces-Control-Allow-Headers', ['content-type', 'authorization'])
-//   next();
-// })
-
-const corsOptions = {
-  origin: ['https://www.api.nomoredomains.mesto.nomoredomains.work',
-            'https://nomoredomains.mesto.nomoredomains.rocks/signin',
-            'http://localhost:3000'],
-  methods: ['OPTIONS', 'GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: [
-    'Content-Type',
-    'origin',
-    'x-access-token',
-    'authorization'
-  ],
-  credentials: true,
-};
-app.use(function(req, res, next) {
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200)
-  }
-  next();
-})
-app.use("*", cors(corsOptions));
-// app.options("*", cors(corsOptions));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
