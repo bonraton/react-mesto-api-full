@@ -12,7 +12,9 @@ const app = express();
 
 app.use(function(req, res, next) {
   const { origin } = req.headers;
-  res.header('Acces-Control-Allow-Origin', origin)
+  res.header('Acces-Control-Allow-Origin', origin);
+  res.header('Methods', ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE']);
+  res.header('Acces-Control-Allow-Headers', ['content-type', 'authorization'])
   next();
 })
 
