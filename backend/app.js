@@ -59,8 +59,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use('/users', jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));
 
-app.post('/signin', loginValidator, login);
-app.post('/signup', registerValidator, createUser);
+app.post('/signin',cors(), loginValidator, login);
+app.post('/signup',cors(), registerValidator, createUser);
 
 app.use('*', jwtCheck);
 
