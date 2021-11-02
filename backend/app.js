@@ -12,17 +12,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(function (req, res, next) {
-if (req.method === 'OPTIONS') {
-  res.sendStatus(200);
-  next()
-}
-})
-app.use(cors(), function (req, res) {
+
+app.use(function (req, res) {
   if (req.method === 'OPTIONS') {
     res.sendStatus(ok);
   }
-});
+}, cors());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
