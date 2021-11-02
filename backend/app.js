@@ -13,6 +13,7 @@ const app = express();
 app.use(function(req, res, next) {
   const { origin } = req.headers;
   res.header('Acces-Control-Allow-Origin', origin)
+  next();
 })
 
 // const corsOptions = {
