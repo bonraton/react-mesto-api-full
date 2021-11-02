@@ -5,6 +5,7 @@ const { login, createUser } = require('./controllers/user');
 const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 const cors  = require('cors');
+const { addColors } = require('winston/lib/winston/config');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -18,6 +19,26 @@ const allowedCors = ['http://localhost:3000',
                      'http://api.nomoredomains.mesto.nomoredomains.work',
                     ]
 // const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
+
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://nomoredomains.mesto.nomoredomains.rocks',
+    'https://api.nomoredomains.mesto.nomoredomains.work',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: [
+    'Content-Type',
+    'origin',
+    'x-access-token',
+    'authorization'
+  ],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // const corsOptions = {
 //   origin: "https://api.nomoredomains.mesto.nomoredomains.work",
