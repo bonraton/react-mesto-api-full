@@ -26,6 +26,7 @@ const corsOptions = {
     }
   },
   methods: DEFAULT_ALLOWEDMETHODS,
+  allowedHeaders: ['content-type', 'authorization'],
   preflightContinue: false,
   optionSuccessStatus: 204
 }
