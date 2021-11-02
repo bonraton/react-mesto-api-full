@@ -27,10 +27,10 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cors());
-app.options('*', cors(), function(req, res) {
-  res.sendStatus(200);
-})
-app.options(function (req, res) {
+// app.options('*', cors(), function(req, res) {
+//   res.sendStatus(200);
+// })
+app.options('*', function (req, res) {
   res.sendStatus(200);
 })
 
