@@ -20,7 +20,11 @@ const allowedCors = ['http://localhost:3000',
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
 app.use(cors());
-app.options('*', cors());
+app.options('*', cors(), function (req,res) {
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  }
+});
 
 // const corsOptions = {
 //   credentials: true,
