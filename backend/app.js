@@ -6,6 +6,7 @@ const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 
 const allowedCors = ['http://localhost:3000',
+                      'http://localhost:3001',
                      'https://nomoredomains.mesto.nomoredomains.rocks',
                      'http://nomoredomains.mesto.nomoredomains.rocks',
                      'https://api.nomoredomains.mesto.nomoredomains.work',
@@ -31,12 +32,12 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.use(function(req, res, next) {
   const { method } = req;
-  const requestHeaders  = req.headers['access-control-request-headers'];
+  const requestHeaders  = req.headers['Access-Control-Request-Headers'];
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
-  else if (method === 'OPTIONS') {
+  if (method === 'OPTIONS') {
     res.status(200);
     res.header('Access-Control-Allow-Headers', requestHeaders);
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWEDMETHODS);
