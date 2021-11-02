@@ -1,6 +1,6 @@
 export class Api {
   constructor() {
-    // this._adress = '';
+    this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work/signup';
     this._token = ` Bearer ${localStorage.jwt}`;
   }
 
