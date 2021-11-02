@@ -19,6 +19,9 @@ const allowedCors = ['http://localhost:3000',
                     ]
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
+app.use(cors());
+app.options('*', cors());
+
 // app.use(cors());
 // app.options('*', cors(), function (req,res) {
 //   if (req.method === 'OPTIONS') {
@@ -26,14 +29,13 @@ const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 //   }
 // });
 
-const corsOptions = {
-  origin: "https://api.nomoredomains.mesto.nomoredomains.work",
-  allowedHeaders: 'Content-Type, Authorization',
-  methods: DEFAULT_ALLOWEDMETHODS,
-  credentials: true,
-  optionSuccessStatus: 204,
-  // preflightContinue: false,
-}
+// const corsOptions = {
+//   origin: "https://api.nomoredomains.mesto.nomoredomains.work",
+//   allowedHeaders: 'Content-Type, Authorization',
+//   methods: DEFAULT_ALLOWEDMETHODS,
+//   credentials: true,
+//   optionSuccessStatus: 204,
+// }
 
 app.use(cors(corsOptions));
 
