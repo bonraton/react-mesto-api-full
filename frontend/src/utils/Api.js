@@ -1,8 +1,20 @@
+// API.js REACT
 export class Api {
   constructor() {
-    this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work';
+    this._adress = 'http://localhost:3000';
     this._token = ` Bearer ${localStorage.jwt}`;
   }
+
+   // Берем данные профиля
+   getProfileInfo() {
+    return fetch(`${this._adress}/users/me`, {
+      method: "GET",
+      headers: {
+        authorization: this._token,
+      },
+    }).then((result) => this._getResponseData(result));
+  }
+
 
   // Проверяем статус запроса
   _getResponseData(result) {
@@ -16,15 +28,6 @@ export class Api {
   // Собираем карточки
   getCards() {
     return fetch(`${this._adress}/cards`, {
-      headers: {
-        authorization: this._token,
-      },
-    }).then((result) => this._getResponseData(result));
-  }
-
-  // Берем данные профиля
-  getProfileInfo() {
-    return fetch(`${this._adress}/users/me`, {
       headers: {
         authorization: this._token,
       },
