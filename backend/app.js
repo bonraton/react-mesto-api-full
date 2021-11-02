@@ -27,7 +27,7 @@ const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 // });
 
 const corsOptions = {
-  origin: false,
+  origin: "*",
   methods: DEFAULT_ALLOWEDMETHODS,
   alowedHeaders: ['content-type', 'authorization'],
   credentials: true,
