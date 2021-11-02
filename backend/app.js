@@ -19,7 +19,7 @@ const corsOptions = {
   allowedHeader: ['Content-type', 'Authorization'],
   credential: true,
   optionsSuccessStatus: 200,
-  preflightContinue: false,
+  preflightContinue: true,
 }
 
 app.use(cors(corsOptions))
