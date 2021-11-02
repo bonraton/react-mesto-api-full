@@ -5,6 +5,7 @@ const { errors } = require('celebrate');
 const { login, createUser } = require('./controllers/user');
 const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
+const { addColors } = require('winston/lib/winston/config');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -13,21 +14,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use(function (req, res) {
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(ok);
-  }
-}, cors());
+app.use(cors());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
 
-app.use('/users', jwtCheck, require('./routes/user'));
+app.use('/users', cors(), jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));
 
-app.post('/signin', loginValidator, login);
-app.post('/signup', registerValidator, createUser);
+app.post('/signin', cors(), loginValidator, login);
+app.post('/signup', cors(), registerValidator, createUser);
 
 app.use('*', jwtCheck);
 
