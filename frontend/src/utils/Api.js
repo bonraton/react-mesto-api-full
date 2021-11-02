@@ -1,7 +1,7 @@
 // API.js REACT
 export class Api {
   constructor() {
-    this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work';
+    this._adress = 'http://api.nomoredomains.mesto.nomoredomains.work';
     this._token = `Bearer ${localStorage.jwt}`;
   }
 
