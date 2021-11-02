@@ -21,6 +21,11 @@ const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
 app.use(cors());
 app.options('*', cors());
+app.use(function (req, res) {
+  if (req.method === 'OPTIONS') {
+    res.sendStatus('200');
+  }
+})
 
 // app.use(cors());
 // app.options('*', cors(), function (req,res) {
