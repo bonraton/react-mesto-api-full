@@ -42,7 +42,7 @@ app.use(function (req, res) {
 //   optionSuccessStatus: 204,
 // }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
