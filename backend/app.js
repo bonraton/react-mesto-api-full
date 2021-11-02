@@ -14,17 +14,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use(cors());
+app.use(cors() function (req, res) {
+  if (req.method === 'OPTIONS') {
+    res.ok;
+  }
+});
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
 
-app.use('/users', cors(), jwtCheck, require('./routes/user'));
+app.use('/users', jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));
 
-app.post('/signin', cors(), loginValidator, login);
-app.post('/signup', cors(), registerValidator, createUser);
+app.post('/signin', loginValidator, login);
+app.post('/signup', registerValidator, createUser);
 
 app.use('*', jwtCheck);
 
