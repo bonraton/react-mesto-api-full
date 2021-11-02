@@ -163,7 +163,6 @@ function App(props) {
         if (result.data) {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? result.data : c))
-          // state.map((c) => (console.log(c), console.log(result.data)))
         );
         }
       } catch (e) {
