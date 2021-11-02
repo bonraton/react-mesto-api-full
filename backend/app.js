@@ -17,18 +17,17 @@ const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
 const corsOptions = {
   credentials: true,
-  origin: function checkCors(origin, callback) {
+  origin: function checkCors(origin, callback, req, res) {
     if (allowedCors.includes(origin)) {
       callback(null, true);
+      res.sendStatu(200);
     } else {
       callback(new Error('CORS HATE'))
     }
   }
 }
 
-app.use(cors(corsOptions), function (req, res) {
-  res.sendStatus(200)
-});
+app.use(cors(corsOptions));
 
 const { PORT = 3000 } = process.env;
 const app = express();
