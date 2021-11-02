@@ -32,7 +32,7 @@ const corsOptions = {
   methods: DEFAULT_ALLOWEDMETHODS,
   credentials: true,
   optionSuccessStatus: 204,
-  preflightContinue: false,
+  // preflightContinue: false,
 }
 
 app.use(cors(corsOptions));
