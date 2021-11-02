@@ -10,13 +10,13 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 
-// const allowedCors = ['http://localhost:3000',
-//                       'http://localhost:3001',
-//                      'https://nomoredomains.mesto.nomoredomains.rocks',
-//                      'http://nomoredomains.mesto.nomoredomains.rocks',
-//                      'https://api.nomoredomains.mesto.nomoredomains.work',
-//                      'http://api.nomoredomains.mesto.nomoredomains.work',
-//                     ]
+const allowedCors = ['http://localhost:3000',
+                      'http://localhost:3001',
+                     'https://nomoredomains.mesto.nomoredomains.rocks',
+                     'http://nomoredomains.mesto.nomoredomains.rocks',
+                     'https://api.nomoredomains.mesto.nomoredomains.work',
+                     'http://api.nomoredomains.mesto.nomoredomains.work',
+                    ]
 // const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
 // const corsOptions = {
@@ -27,7 +27,16 @@ const app = express();
 //   optionSuccessStatus: 204,
 // }
 
-app.use(cors());
+app.use(cors({
+  origin: function (origin , callback) {
+    if (!origin) return callback(null, true);
+    if (allowedCors.indexOf(origin) === -1) {
+      const msg = 'HATE CORS';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 // app.options('*', cors(corsOptions));
 
 
