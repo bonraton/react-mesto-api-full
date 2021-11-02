@@ -19,7 +19,15 @@ const allowedCors = ['http://localhost:3000',
                     ]
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://api.nomoredomains.mesto.nomoredomains.work",
+  allowedHeaders: 'Content-Type, Authorization',
+  methods: DEFAULT_ALLOWEDMETHODS,
+  credentials: true,
+  optionSuccessStatus: 204,
+}
+
+app.use(cors(corsOptions));
 app.options('*', cors());
 app.use(function (req, res, next) {
   if (req.method === 'OPTIONS') {
@@ -35,13 +43,6 @@ app.use(function (req, res, next) {
 //   }
 // });
 
-// const corsOptions = {
-//   origin: "https://api.nomoredomains.mesto.nomoredomains.work",
-//   allowedHeaders: 'Content-Type, Authorization',
-//   methods: DEFAULT_ALLOWEDMETHODS,
-//   credentials: true,
-//   optionSuccessStatus: 204,
-// }
 
 // app.use(cors(corsOptions));
 
