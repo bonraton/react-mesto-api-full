@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(function(req, res, next) {
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Origin', origin);
   }
   next();
 })
@@ -37,8 +37,8 @@ app.use(function(req, res, next) {
   const requestHeaders  = req.headers['access-control-request-headers'];
   if (method === 'OPTIONS') {
     res.status(200);
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWEDMETHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWEDMETHODS);
     return res.end();
   }
   next();
