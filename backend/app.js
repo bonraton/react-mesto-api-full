@@ -11,6 +11,7 @@ const app = express();
 
 
 const allowedCors = ['http://localhost:3000',
+                      'http://localhost:3001',
                      'https://nomoredomains.mesto.nomoredomains.rocks',
                      'http://nomoredomains.mesto.nomoredomains.rocks',
                      'https://api.nomoredomains.mesto.nomoredomains.work',
@@ -18,23 +19,26 @@ const allowedCors = ['http://localhost:3000',
                     ]
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
-const corsOptions = {
-  credentials: true,
-  origin: function checkCors(origin, callback, req, res) {
-    if (allowedCors.includes(origin)) {
-      callback(null, true);
-      res.sendStatu(200);
-    } else {
-      callback(new Error('CORS HATE'))
-    }
-  },
-  methods: DEFAULT_ALLOWEDMETHODS,
-  allowedHeaders: ['content-type', 'authorization'],
-  preflightContinue: false,
-  optionSuccessStatus: 204
-}
+app.use(cors());
+app.options('*', cors());
 
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   credentials: true,
+//   origin: function checkCors(origin, callback, req, res) {
+//     if (allowedCors.includes(origin)) {
+//       callback(null, true);
+//       res.sendStatus(200);
+//     } else {
+//       callback(new Error('CORS HATE'))
+//     }
+//   },
+//   methods: DEFAULT_ALLOWEDMETHODS,
+//   allowedHeaders: ['content-type', 'authorization'],
+//   preflightContinue: false,
+//   optionSuccessStatus: 204
+// }
+
+// app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
