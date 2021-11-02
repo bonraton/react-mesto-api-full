@@ -10,26 +10,31 @@ const { registerValidator, loginValidator } = require('./middlewares/validation'
 const { PORT = 3000 } = process.env;
 const app = express();
 
-const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'https://nomoredomains.mesto.nomoredomains.rocks',
-    'https://api.nomoredomains.mesto.nomoredomains.work',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: [
-    'Content-Type',
-    'origin',
-    'x-access-token',
-    'authorization'
-  ],
-  credentials: true,
-};
+app.use(function(req, res, next) {
+  const { origin } = req.headers;
+  res.header('Acces-Control-Allow-Origin', origin)
+})
 
-app.use("*", cors(corsOptions));
-app.options("*", cors(corsOptions));
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:3000',
+//     'https://nomoredomains.mesto.nomoredomains.rocks',
+//     'https://api.nomoredomains.mesto.nomoredomains.work',
+//   ],
+//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: [
+//     'Content-Type',
+//     'origin',
+//     'x-access-token',
+//     'authorization'
+//   ],
+//   credentials: true,
+// };
+
+// app.use("*", cors(corsOptions));
+// app.options("*", cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
