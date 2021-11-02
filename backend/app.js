@@ -30,8 +30,9 @@ const corsOptions = {
   origin: "http://api.nomoredomains.mesto.nomoredomains.work/users/me",
   allowedHeaders: 'Content-Type, Authorization',
   methods: DEFAULT_ALLOWEDMETHODS,
-  preflightContinue: false,
   credentials: true,
+  optionSuccessStatus: 204,
+  preflightContinue: false,
 }
 
 app.use(cors(corsOptions));
