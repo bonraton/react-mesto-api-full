@@ -30,6 +30,9 @@ app.use(cors());
 app.options('*', cors(), function(req, res) {
   res.sendStatus(200);
 })
+app.options(function (req, res) {
+  res.sendStatus(200);
+})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
