@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
 if (req.method === 'OPTIONS') {
   res.sendStatus(200);
+  next()
 }
 })
 app.use(cors());
