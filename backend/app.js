@@ -28,20 +28,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.options('*', cors());
-app.use(function (req, res, next) {
-  if (req.method === 'OPTIONS') {
-    res.sendStatus('200');
-    next();
-  }
-})
-
-// app.use(cors());
-// app.options('*', cors(), function (req,res) {
-//   if (req.method === 'OPTIONS') {
-//     res.sendStatus(200);
-//   }
-// });
+app.options('*', cors(corsOptions));
 
 
 // app.use(cors(corsOptions));
