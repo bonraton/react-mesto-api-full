@@ -6,11 +6,6 @@ const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 const { cors } = require('cors');
 
-const corsOptions = {
-  origin: "*",
-  methods: DEFAULT_ALLOWEDMETHODS,
-  allowedHeaders: reqHeaders
-}
 
 const allowedCors = ['http://localhost:3000',
                      'https://nomoredomains.mesto.nomoredomains.rocks',
@@ -21,6 +16,12 @@ const allowedCors = ['http://localhost:3000',
                      'http://nomoredomains.mesto.nomoredomains.rocks/users/me'
                     ]
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
+
+const corsOptions = {
+  origin: '*',
+  methods: DEFAULT_ALLOWEDMETHODS,
+  allowedHeaders: ['content-type', 'authorization']
+}
 
 
 const { PORT = 3000 } = process.env;
