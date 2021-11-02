@@ -1,7 +1,7 @@
 // API.js REACT
 export class Api {
   constructor() {
-    // this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work';
+    this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work';
     this._token = `Bearer ${localStorage.jwt}`;
   }
 
@@ -9,10 +9,9 @@ export class Api {
    getProfileInfo() {
     return fetch(`${this._adress}/users/me`, {
       method: "GET",
-      credentials: "include",
       headers: {
         'Authorization': this._token,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
         // authorization: this._token,
       },
     }).then((result) => this._getResponseData(result));
