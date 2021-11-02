@@ -27,7 +27,7 @@ const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 // });
 
 const corsOptions = {
-  origin: "http://api.nomoredomains.mesto.nomoredomains.work/users/me",
+  origin: "https://api.nomoredomains.mesto.nomoredomains.work",
   allowedHeaders: 'Content-Type, Authorization',
   methods: DEFAULT_ALLOWEDMETHODS,
   credentials: true,
