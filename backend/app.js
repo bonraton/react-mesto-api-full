@@ -38,7 +38,9 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions), function (req, res) {
+  res.sendStatus(ok)
+});
 
 // const corsOptions = {
 //   origin: "https://api.nomoredomains.mesto.nomoredomains.work",
