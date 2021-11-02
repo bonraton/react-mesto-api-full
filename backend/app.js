@@ -27,8 +27,9 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cors());
-app.options('*', cors(), function(req, res) {
-  res.status(ok);
+app.use('*', cors());
+app.options('*', function(req, res) {
+  res.sendStatus(ok);
 })
 
 app.use(express.json());
