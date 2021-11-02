@@ -19,30 +19,22 @@ const allowedCors = ['http://localhost:3000',
                     ]
 const DEFAULT_ALLOWEDMETHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
 
-app.use(cors());
-app.options('*', cors(), function (req,res) {
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  }
-});
+// app.use(cors());
+// app.options('*', cors(), function (req,res) {
+//   if (req.method === 'OPTIONS') {
+//     res.sendStatus(200);
+//   }
+// });
 
-// const corsOptions = {
-//   credentials: true,
-//   origin: function checkCors(origin, callback, req, res) {
-//     if (allowedCors.includes(origin)) {
-//       callback(null, true);
-//       res.sendStatus(200);
-//     } else {
-//       callback(new Error('CORS HATE'))
-//     }
-//   },
-//   methods: DEFAULT_ALLOWEDMETHODS,
-//   allowedHeaders: ['content-type', 'authorization'],
-//   preflightContinue: false,
-//   optionSuccessStatus: 204
-// }
+const corsOptions = {
+  origin: false,
+  methods: DEFAULT_ALLOWEDMETHODS,
+  alowedHeaders: ['content-type', 'authorization'],
+  credentials: true,
+  optionSuccessStatus: 204,
+}
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
