@@ -6,7 +6,7 @@ const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
 const cors = require('cors')
 
-const { PORT = 3000 } = process.env;
+const { PORT = 4000 } = process.env;
 const app = express();
 // const corsOptions = {
 //   origin: ['https://nomoredomains.mesto.nomoredomains.rocks',
