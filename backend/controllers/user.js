@@ -1,7 +1,7 @@
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const { JWT_SECRET } = require('../configs/index');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 const BadRequestError = require('../errors/BadRequestError');
@@ -51,7 +51,7 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = { token: jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' }) };
+      const token = { token: jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' }) };
       res.send(token);
     })
     .catch(() => next(new UnauthorizedError('Пользователь с указанным email не найден')));

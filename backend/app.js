@@ -1,30 +1,27 @@
+require('dotenv').config(); 
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const { login, createUser } = require('./controllers/user');
 const { jwtCheck } = require('./middlewares/auth');
 const { registerValidator, loginValidator } = require('./middlewares/validation');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('cors')
 
 const { PORT = 4000 } = process.env;
 const app = express();
-// const corsOptions = {
-//   origin: ['https://nomoredomains.mesto.nomoredomains.rocks',
-//           'http://nomoredomains.mesto.nomoredomains.rocks',
-//           'http://localhost:3000'],
-//   methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
-//   preflightContinue: false,
-//   optionSuccessStatus: 204,
-//   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: ['https://nomoredomains.mesto.nomoredomains.rocks',
+          'http://nomoredomains.mesto.nomoredomains.rocks',
+          'http://localhost:3000'],
+  methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
+  preflightContinue: false,
+  optionSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
 
-// app.use('*', cors(corsOptions));
-
-app.use(cors({
-  origin: '*'
-}));
-
+app.use('*', cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -33,6 +30,14 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewurlParser: true,
 });
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+}); 
+
+app.use(requestLogger);
+
 app.use('/users', jwtCheck, require('./routes/user'));
 app.use('/cards', jwtCheck, require('./routes/cards'));
 
@@ -40,6 +45,8 @@ app.post('/signin', loginValidator, login);
 app.post('/signup', registerValidator, createUser);
 
 app.use('*', jwtCheck);
+
+app.use(errorLogger)
 
 app.use(errors(), (err, req, res, next) => {
   const { statusCode = 500, message } = err;

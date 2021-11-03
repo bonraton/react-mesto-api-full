@@ -90,17 +90,6 @@ function App(props) {
     window.addEventListener("click", closeByOverlay);
   }, [loggedIn]);
 
-  //получаем данные профиля
-  useEffect(() => {
-    if (loggedIn) {
-      Api.getProfileInfo()
-      .then((result) => {
-        setCurrentUser(result);
-      })
-      .catch(() => console.log("Ошибка при получении данных"));
-    }
-  }, [loggedIn]);
-
   //Обновлаяем данные профиля
   async function handleUpdateUser(name, about) {
     try {
@@ -119,7 +108,7 @@ function App(props) {
     try {
       const result = await Api.editAvatarInfo(avatar);
       if (result) {
-        setCurrentUser(result.data);
+        setCurrentUser(result);
         closeAllPopups();
       }
     } catch (e) {
@@ -149,9 +138,33 @@ function App(props) {
     }
   }
 
+  async function getUser() {
+    try {
+      const result = await Api.getProfileInfo();
+      if (result) {
+        setCurrentUser(result)
+      }
+    } catch (e) {
+      console.log(`Ошибка при получении данных`)
+    }
+  }
+
+    // //получаем данные профиля
+    // useEffect(() => {
+    //   if (loggedIn) {
+    //     Api.getProfileInfo()
+    //     .then((result) => {
+    //       console.log(result);
+    //       setCurrentUser(result);
+    //     })
+    //     .catch(() => console.log("Ошибка при получении данных"));
+    //   }
+    // }, [loggedIn]);
+
   useEffect(() => {
     if (loggedIn) {
-      getCards();
+      getUser()
+      getCards()
     }
   }, [loggedIn]);
 
@@ -232,6 +245,9 @@ function App(props) {
         const userData = {
           id: data._id,
           email: data.email,
+          name: data.name,
+          about: data.about,
+          avatar: data.avatar,
         };
         setLoggedIn(true);
         props.history.push("/");
