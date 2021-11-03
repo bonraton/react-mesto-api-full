@@ -149,18 +149,6 @@ function App(props) {
     }
   }
 
-    // //получаем данные профиля
-    // useEffect(() => {
-    //   if (loggedIn) {
-    //     Api.getProfileInfo()
-    //     .then((result) => {
-    //       console.log(result);
-    //       setCurrentUser(result);
-    //     })
-    //     .catch(() => console.log("Ошибка при получении данных"));
-    //   }
-    // }, [loggedIn]);
-
   useEffect(() => {
     if (loggedIn) {
       getUser()
@@ -252,6 +240,7 @@ function App(props) {
         setLoggedIn(true);
         props.history.push("/");
         setuserInfo(userData.email);
+        setCurrentUser(userData);
       }
     } catch (e) {
       console.log(`ошибка ${e}`);
