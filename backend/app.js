@@ -8,18 +8,23 @@ const cors = require('cors')
 
 const { PORT = 3000 } = process.env;
 const app = express();
-const corsOptions = {
-  origin: ['https://nomoredomains.mesto.nomoredomains.rocks',
-          'http://nomoredomains.mesto.nomoredomains.rocks',
-          'http://localhost:3000'],
-  methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
-  preflightContinue: false,
-  optionSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: ['https://nomoredomains.mesto.nomoredomains.rocks',
+//           'http://nomoredomains.mesto.nomoredomains.rocks',
+//           'http://localhost:3000'],
+//   methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
+//   preflightContinue: false,
+//   optionSuccessStatus: 204,
+//   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+//   credentials: true,
+// };
 
-app.use('*', cors(corsOptions));
+// app.use('*', cors(corsOptions));
+
+app.use(cors({
+  origin: '*'
+}));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
