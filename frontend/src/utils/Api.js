@@ -1,8 +1,6 @@
 export class Api {
   constructor() {
-    // this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work';
-    this._adress = 'http://localhost:3000';
-    
+    this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work';
     this._token = ` Bearer ${localStorage.jwt}`;
   }
 
