@@ -26,7 +26,7 @@ export class Api {
   getProfileInfo() {
     return fetch(`${this._adress}/users/me`, {
       headers: {
-        authorization: this._token,
+        'Authorization': this._token,
       },
     }).then((result) => this._getResponseData(result));
   }
@@ -36,7 +36,7 @@ export class Api {
     return fetch(`${this._adress}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: this._token,
+        'Authorization': this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
