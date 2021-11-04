@@ -92,6 +92,12 @@ function App(props) {
     window.addEventListener("click", closeByOverlay);
   }, [loggedIn]);
 
+  useEffect(() => {
+    tokenCheck();
+    getCards();
+    getUser();
+  }, [loggedIn]);
+
   async function getUser() {
     try {
       const result = await Api.getProfileInfo();
@@ -110,6 +116,7 @@ function App(props) {
       if (result) {
         setCurrentUser(result.data);
         closeAllPopups();
+        console.log(result, result.data)
       }
     } catch (e) {
       console.log(`Ошибка при отправке данных ${e}`);
@@ -241,12 +248,6 @@ function App(props) {
       console.log(`ошибка ${e}`);
     }
   }
-
-  useEffect(() => {
-    tokenCheck();
-    getCards();
-    getUser();
-  }, [loggedIn]);
 
   function clicked() {
     setHeaderInfo(true);
