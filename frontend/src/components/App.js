@@ -247,9 +247,9 @@ function App(props) {
     }
   }
 
-  useEffect(() => {
-    tokenCheck();
-  }, []);
+  // useEffect(() => {
+  //   tokenCheck();
+  // }, []);
 
   function clicked() {
     setHeaderInfo(true);
