@@ -4,3 +4,5 @@
 ---
 # Ссылки на проект
 
+https://nomoredomains.mesto.nomoredomains.rocks
+[178.154.246.61](178.154.246.61)
