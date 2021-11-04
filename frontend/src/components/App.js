@@ -21,8 +21,6 @@ function App(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [headerInfo, setHeaderInfo] = useState(false);
 
-  const history = useHistory();
-
   //попапы
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -144,12 +142,19 @@ function App(props) {
     try {
       const result = await Api.getProfileInfo();
       if (result) {
-        setCurrentUser(result);
+        setCurrentUser(result)
       }
     } catch (e) {
       console.log(`Ошибка при получении данных`)
     }
   }
+
+  useEffect(() => {
+    if (loggedIn) {
+      getUser()
+      getCards()
+    }
+  }, [loggedIn]);
 
   // лайк карточки
   async function handleCardLike(card) {
@@ -219,7 +224,7 @@ function App(props) {
     }
   }
 
-  // проверяем токен
+  //проверяем токен
   async function tokenCheck() {
     try {
       const jwt = localStorage.getItem("jwt");
@@ -244,18 +249,16 @@ function App(props) {
 
   useEffect(() => {
     tokenCheck();
-    getCards();
-    getUser();
-  }, [loggedIn]);
+  }, []);
 
   function clicked() {
     setHeaderInfo(true);
     setHeaderInfo(!headerInfo);
   }
 
+  const history = useHistory();
   function signOut() {
     localStorage.removeItem("jwt");
-    setLoggedIn(false);
     history.push("./signup");
   }
 
