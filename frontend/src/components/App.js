@@ -92,6 +92,17 @@ function App(props) {
     window.addEventListener("click", closeByOverlay);
   }, [loggedIn]);
 
+  async function getUser() {
+    try {
+      const result = await Api.getProfileInfo();
+      if (result) {
+        setCurrentUser(result);
+      }
+    } catch (e) {
+      console.log(`Ошибка при получении данных`)
+    }
+  }
+
   //Обновлаяем данные профиля
   async function handleUpdateUser(name, about) {
     try {
@@ -110,7 +121,7 @@ function App(props) {
     try {
       const result = await Api.editAvatarInfo(avatar);
       if (result) {
-        setCurrentUser(result);
+        setCurrentUser(result.data);
         closeAllPopups();
       }
     } catch (e) {
@@ -137,17 +148,6 @@ function App(props) {
       }
     } catch (e) {
       console.log(`Ошибка при отправке данных ${e}`);
-    }
-  }
-
-  async function getUser() {
-    try {
-      const result = await Api.getProfileInfo();
-      if (result) {
-        setCurrentUser(result);
-      }
-    } catch (e) {
-      console.log(`Ошибка при получении данных`)
     }
   }
 
