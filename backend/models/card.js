@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
-// const validate = require('mongoose-validator');
-require('mongoose-type-url');
+const { isURL } = require('validator');
 
 const cardSchema = new mongoose.Schema({
   name: {
-    type: String,
+    type: isURL,
     minlength: 2,
     maxlength: 30,
     required: true,

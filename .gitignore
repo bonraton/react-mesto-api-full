@@ -1,11 +1,12 @@
-#logs
+# Logs
 logs
 *.log
-npm-debug.log
+npm-debug.log*
 
+# Dependency directory
 node_modules
-.env
 
+# Optional npm cache directory
 .npm
 
 # Optional REPL history

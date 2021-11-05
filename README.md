@@ -4,5 +4,10 @@
 ---
 # Ссылки на проект
 
-https://nomoredomains.mesto.nomoredomains.rocks
-[178.154.246.61](178.154.246.61)
+[Проект 15 Место](https://nomoredomains.mesto.nomoredomains.rocks)
+
+
+[API проекта 15 Место](https://https://api.nomoredomains.mesto.nomoredomains.work)
+
+
+[Публичный IP](178.154.246.61)

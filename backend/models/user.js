@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
+const { isEmail, isURL } = require('validator');
 
 const userSchema = new mongoose.Schema({
   email: {
-    type: String,
+    type: isEmail,
     required: true,
     unique: true,
   },
@@ -24,7 +25,7 @@ const userSchema = new mongoose.Schema({
     default: 'Исследователь',
   },
   avatar: {
-    type: String,
+    type: isURL,
     minlength: 2,
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
   },
@@ -47,10 +48,5 @@ userSchema.statics.findUserByCredentials = function (email, password) {
         });
     });
 };
-
-userSchema.path('avatar').validate((val) => {
-  const urlRegex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-  return urlRegex.test(val);
-});
 
 module.exports = mongoose.model('user', userSchema);

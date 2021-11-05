@@ -17,23 +17,25 @@ const createCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Переданы некорректные данные');
+      } else {
+        next(err);
       }
-    })
-    .catch(next);
+    });
 };
 
 const deleteCard = (req, res, next) => {
   Card.findById(req.params.id)
     .then((card) => {
+      if (!card) {
+        throw new NotFoundError('Данная карточка не найдена');
+      }
       if (card.owner.equals(req.user._id)) {
         return card.deleteOne(card)
           .then(() => res.send({ data: card }));
       }
       next(new ForbiddenError('Вы не можете удалить чужую карточку'));
     })
-    .catch(() => {
-      next(new NotFoundError('Данная карточка не найдена'));
-    });
+    .catch(next);
 };
 
 const likeCard = (req, res, next) => {

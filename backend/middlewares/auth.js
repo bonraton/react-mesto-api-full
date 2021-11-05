@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/UnauthorizedError');
+const { JWT_SECRET } = require('../helpers/constants');
 
 const jwtCheck = (req, res, next) => {
   const { authorization } = req.headers;
@@ -11,7 +12,7 @@ const jwtCheck = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, process.env.JWT_SECRET);
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     throw new UnauthorizedError('Ошибка аутентификации');
   }

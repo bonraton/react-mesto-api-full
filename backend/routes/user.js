@@ -7,9 +7,9 @@ const { objectIdValidator, updateUserInfoValidator, updateUserAvatarValidator } 
 
 router.get('/', getUsers);
 
-router.get('/:id', getUser);
+router.get('/me', objectIdValidator, getUser);
 
-router.get('/me', getUser);
+router.get('/:id', objectIdValidator, getUser);
 
 router.patch('/me', updateUserInfoValidator, updateProfile);
 
