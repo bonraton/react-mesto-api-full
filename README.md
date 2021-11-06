@@ -4,10 +4,10 @@
 ---
 # Ссылки на проект
 
-Проект 15 Mesto[https://nomoredomains.mesto.nomoredomains.rocks](https://nomoredomains.mesto.nomoredomains.rocks)
+Проект 15 Mesto. [https://nomoredomains.mesto.nomoredomains.rocks](https://nomoredomains.mesto.nomoredomains.rocks)
 
 
-API проекта 15 Mesto[https://https://api.nomoredomains.mesto.nomoredomains.work](https://https://api.nomoredomains.mesto.nomoredomains.work)
+API проекта 15 Mesto. [https://https://api.nomoredomains.mesto.nomoredomains.work](https://https://api.nomoredomains.mesto.nomoredomains.work)
 
 
-Публичный IP[178.154.246.61](178.154.246.61)
+Публичный IP. [178.154.246.61](178.154.246.61)
