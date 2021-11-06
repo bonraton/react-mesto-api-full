@@ -1,3 +1,4 @@
+
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import React, { useEffect, useState } from "react";
 import Header from "./Header.js";
@@ -94,8 +95,8 @@ function App(props) {
 
   
   useEffect(() => {
-    getCards();
     getUser();
+    getCards();
   }, [loggedIn, setCards, setCurrentUser]);
 
   async function getUser() {
@@ -252,7 +253,7 @@ function App(props) {
 
   useEffect(() => {
     tokenCheck()
-  }, [loggedIn])
+  }, [loggedIn, history])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

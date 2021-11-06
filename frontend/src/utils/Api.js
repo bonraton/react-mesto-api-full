@@ -1,6 +1,7 @@
 export class Api {
   constructor() {
-    this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work'
+    // this._adress = 'https://api.nomoredomains.mesto.nomoredomains.work'
+    this._adress = 'http://localhost:4000';
     this._token = `Bearer ${localStorage.jwt}`;
   }
 
@@ -17,7 +18,7 @@ export class Api {
   getCards() {
     return fetch(`${this._adress}/cards`, {
       headers: {
-        authorization: this._token,
+        'Authorization': this._token,
       },
     }).then((result) => this._getResponseData(result));
   }

@@ -39,11 +39,13 @@ app.get('/crash-test', () => {
 
 app.use(requestLogger);
 
+
 app.post('/signin', loginValidator, login);
 app.post('/signup', registerValidator, createUser);
 
-app.use('/cards', require('./routes/cards'));
 app.use('/users', jwtCheck, require('./routes/user'));
+app.use('/cards', jwtCheck, require('./routes/cards'));
+
 
 
 app.use('*', jwtCheck, (req, res, next) => {
