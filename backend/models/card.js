@@ -7,14 +7,14 @@ const cardSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 30,
     required: true,
-    validate: {
-      validator: (value) => validator.isURL(value),
-      message: 'Неверный формат url',
-    },
   },
   link: {
     type: String,
     required: true,
+    validate: {
+      validator: (value) => validator.isURL(value),
+      message: 'Неверный формат url',
+    },
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

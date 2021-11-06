@@ -44,8 +44,12 @@ const createUser = (req, res, next) => {
   bcrypt.hash(password, 10).then((hash) => User.create({
     name, about, avatar, email, password: hash,
   }))
-    .then((user) => {
-      res.send({ data: { name, about, avatar, email } }) ;
+    .then(() => {
+      res.send({
+        data: {
+          name, about, avatar, email,
+        },
+      });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -80,11 +84,11 @@ const updateProfile = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данные');
+        next(new BadRequestError('Переданы некорректные данные'));
       } else {
-        next(err)
+        next(err);
       }
-    })
+    });
 };
 
 const updateAvatar = (req, res, next) => {
@@ -98,11 +102,11 @@ const updateAvatar = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данные');
+        next(new BadRequestError('Переданы некорректные данные'));
       } else {
-        next(err)
+        next(err);
       }
-    })
+    });
 };
 
 module.exports = {
