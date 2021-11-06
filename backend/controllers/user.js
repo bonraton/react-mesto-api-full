@@ -1,4 +1,3 @@
-require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -26,6 +25,18 @@ const getUser = (req, res, next) => User.findById(req.params.id)
   })
   .catch(next);
 
+const getCurrentUser = (req, res, next) => {
+  const userId = req.user._id;
+  User.findById(userId)
+    .then((user) => {
+      if (!user) {
+        throw new NotFoundError('пользователь с данным Id не найден');
+      }
+      res.send(user);
+    })
+    .catch(next);
+};
+
 const createUser = (req, res, next) => {
   const {
     name, about, avatar, email, password,
@@ -34,19 +45,14 @@ const createUser = (req, res, next) => {
     name, about, avatar, email, password: hash,
   }))
     .then((user) => {
-      res.status(200).send({
-        data:
-        {
-          name, about, avatar, email,
-        },
-      });
+      res.send({ data: { name, about, avatar, email } }) ;
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Переданы некорректные данные');
       }
       if (err.name === 'MongoServerError' && err.code === 11000) {
-        throw new ConflictError('Неверный логин или пароль');
+        throw new ConflictError('пользователь c таким email уже существует');
       }
       next(err);
     })
@@ -76,9 +82,9 @@ const updateProfile = (req, res, next) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Переданы некорректные данные');
       } else {
-        next(err);
+        next(err)
       }
-    });
+    })
 };
 
 const updateAvatar = (req, res, next) => {
@@ -94,11 +100,11 @@ const updateAvatar = (req, res, next) => {
       if (err.name === 'ValidationError') {
         throw new BadRequestError('Переданы некорректные данные');
       } else {
-        next(err);
+        next(err)
       }
-    });
+    })
 };
 
 module.exports = {
-  getUsers, getUser, createUser, updateProfile, updateAvatar, login,
+  getUsers, getUser, createUser, updateProfile, updateAvatar, login, getCurrentUser,
 };

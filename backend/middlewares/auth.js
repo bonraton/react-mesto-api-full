@@ -16,8 +16,9 @@ const jwtCheck = (req, res, next) => {
   } catch (err) {
     throw new UnauthorizedError('Ошибка аутентификации');
   }
+
   req.user = payload;
-  return next();
+  next();
 };
 
 module.exports = { jwtCheck };

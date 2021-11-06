@@ -92,11 +92,11 @@ function App(props) {
     window.addEventListener("click", closeByOverlay);
   }, [loggedIn]);
 
+  
   useEffect(() => {
-    tokenCheck();
     getCards();
     getUser();
-  }, [loggedIn]);
+  }, [loggedIn, setCards, setCurrentUser]);
 
   async function getUser() {
     try {
@@ -226,28 +226,18 @@ function App(props) {
     }
   }
 
-  // проверяем токен
-  async function tokenCheck() {
-    try {
-      const jwt = localStorage.getItem("jwt");
-      const data = await auth.getContent(jwt);
-      if (jwt) {
-        const userData = {
-          id: data._id,
-          email: data.email,
-          name: data.name,
-          about: data.about,
-          avatar: data.avatar,
-        };
-        setLoggedIn(true);
-        props.history.push("/");
-        setuserInfo(userData.email);
-        setCurrentUser(userData);
-      }
-    } catch (e) {
-      console.log(`ошибка ${e}`);
-    }
-  }
+  const tokenCheck = () => {
+    const jwt = localStorage.getItem("jwt");
+    auth.getContent(jwt)
+    .then((result) => {
+      setLoggedIn(true);
+      setuserInfo(result.email);
+      setCurrentUser(result)
+    })
+    .catch((e) =>
+    console.log(`Ошибка ${e}`))
+  };
+
 
   function clicked() {
     setHeaderInfo(true);
@@ -259,6 +249,10 @@ function App(props) {
     setLoggedIn(false);
     history.push("./signup");
   }
+
+  useEffect(() => {
+    tokenCheck()
+  }, [loggedIn])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

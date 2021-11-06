@@ -42,8 +42,9 @@ app.use(requestLogger);
 app.post('/signin', loginValidator, login);
 app.post('/signup', registerValidator, createUser);
 
-app.use('/users', require('./routes/user'));
 app.use('/cards', require('./routes/cards'));
+app.use('/users', jwtCheck, require('./routes/user'));
+
 
 app.use('*', jwtCheck, (req, res, next) => {
   next(new NotfoundError('Маршрут не найден'));

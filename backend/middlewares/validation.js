@@ -56,8 +56,8 @@ const loginValidator = celebrate({
 
 const updateUserInfoValidator = celebrate({
   body: Joi.object().keys({
-    name: JoiStringRequire.min(2).max(30),
-    about: JoiStringRequire.min(2).max(30),
+    name: Joi.string().min(2).max(30),
+    about: Joi.string().min(2).max(30),
   }),
 });
 
