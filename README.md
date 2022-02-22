@@ -10,6 +10,7 @@ Full project with backend and Frontend. Authorized users could add delete, pictu
 - Yandex.Cloud
 - PM2
 - Nginx
+- Certbot
 
 ---
 # Links
