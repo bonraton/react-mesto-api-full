@@ -1,13 +1,15 @@
-# react-mesto-api-full
-Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
+# Mesto React Full
+> 12-15th projects on [Yandex.Praktikum](https://practicum.yandex.ru/profile/web/) Web-development course.
+
+# Description
+Full project with backend and Frontend. Authorized users could add delete, pictures and change user info.
+- Fronted located in `frontend/` folder.
+- Backend located in `backend/` folder.
 
 ---
-# Ссылки на проект
+# Links
 
-Проект 15 Mesto. [https://nomoredomains.mesto.nomoredomains.rocks](https://nomoredomains.mesto.nomoredomains.rocks)
+Mesto Frontend. [https://nomoredomains.mesto.nomoredomains.rocks](https://nomoredomains.mesto.nomoredomains.rocks)
+Mesto API. [https://https://api.nomoredomains.mesto.nomoredomains.work](https://https://api.nomoredomains.mesto.nomoredomains.work)
 
-
-API проекта 15 Mesto. [https://https://api.nomoredomains.mesto.nomoredomains.work](https://https://api.nomoredomains.mesto.nomoredomains.work)
-
-
-Публичный IP. [178.154.246.61](178.154.246.61)
+Public IP. [178.154.246.61](178.154.246.61)
