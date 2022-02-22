@@ -6,6 +6,11 @@ Full project with backend and Frontend. Authorized users could add delete, pictu
 - Fronted located in `frontend/` folder.
 - Backend located in `backend/` folder.
 
+#Techs
+- Yandex.Cloud
+- PM2
+- Nginx
+
 ---
 # Links
 
