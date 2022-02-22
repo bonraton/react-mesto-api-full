@@ -1,13 +1,17 @@
-# Проект Mesto фронтенд + бэкенд
+# Mesto API
+> 13-14th projects on [Yandex.Praktikum](https://practicum.yandex.ru/profile/web/) Web-development course.
 
-## Директории
+# Folders
 
-`/routes` — папка с файлами роутера  
-`/controllers` — папка с файлами контроллеров пользователя и карточки   
-`/models` — папка с файлами описания схем пользователя и карточки  
+`/middlewares` - folder with intermediary functions.   
+
+`/routes` — wolder with route files.   
+
+`/controllers` — folder with user and card controllers.   
+
+`/models` — folder with user and card MongoDb Schemas.   
+
   
-Остальные директории вспомогательные, создаются при необходимости разработчиком
-
-## Запуск проекта
-
-`npm run start` — запускает сервер
+# Run project
+`npm start` - starts server
+`npm run dev` - start server in developer mode with hot reload
