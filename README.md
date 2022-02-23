@@ -2,7 +2,7 @@
 > 12-15th projects on [Yandex.Praktikum](https://practicum.yandex.ru/profile/web/) Web-development course.
 
 # Description
-Full project with backend and Frontend. Authorized users could add delete, pictures and change user info.
+Full project with backend and Frontend.  Authorized users could add delete,  pictures and change user info.
 - Fronted located in `frontend/` folder.
 - Backend located in `backend/` folder.
 
