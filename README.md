@@ -15,7 +15,7 @@ Full project with backend and Frontend. Authorized users could add delete, pictu
 ---
 # Links
 
-Mesto Frontend. [https://nomoredomains.mesto.nomoredomains.rocks](https://nomoredomains.mesto.nomoredomains.rocks)
-Mesto API. [https://https://api.nomoredomains.mesto.nomoredomains.work](https://https://api.nomoredomains.mesto.nomoredomains.work)
+- Mesto Frontend. [https://nomoredomains.mesto.nomoredomains.rocks](https://nomoredomains.mesto.nomoredomains.rocks)
+- Mesto API. [https://https://api.nomoredomains.mesto.nomoredomains.work](https://https://api.nomoredomains.mesto.nomoredomains.work)
 
-Public IP. [178.154.246.61](178.154.246.61)
+- Public IP. [178.154.246.61](178.154.246.61)
