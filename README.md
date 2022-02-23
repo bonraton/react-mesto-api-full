@@ -11,6 +11,7 @@ Full project with backend and Frontend.  Authorized users could add delete,  pic
 - PM2
 - Nginx
 - Certbot
+- MongoDb
 
 ---
 # Links
